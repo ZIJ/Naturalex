@@ -34,10 +34,10 @@ function naturalSort(array, extractor) {
      * @constructor
      */
     function Splitter(item) {
-        var index = 0; 					// string scanning index
-        var from = 0; 					// start index for parts
-        var parts = []; 				// parts array
-        var completed = false; 			// parsing finished flag
+        var index = 0;          // string scanning index
+        var from = 0;           // start index for parts
+        var parts = [];         // parts array
+        var completed = false;  // parsing finished flag
 
         this.item = item;
         // extracting key
