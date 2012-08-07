@@ -6,15 +6,38 @@
  * To change this template use File | Settings | File Templates.
  */
 
+(function ($) {
+    /**
+     * Sorts DOM node's children in lexicographical order using optional key extractor
+     * @param extractor should accept one param - node object
+     */
+    $.fn.sortChildren = function (extractor) {
+        if(typeof(extractor) !== 'function') {
+            extractor = function(node) {
+                return $(node).html();
+            }
+        }
+        var children = this.children();
+        var sortedChildren = naturalSort(children,extractor);
+        this.empty();
+        this.append(sortedChildren);
+    }
+})(jQuery);
+
 /**
  * Sorts an array in natural order
- * @param array
+ * @param arr
  * @param extractor optional function that makes string from an array item
  * @return {*|Array}
  */
-function naturalSort(array, extractor) {
+function naturalSort(arr, extractor) {
     "use strict";
-    var splitters = array.map(makeSplitter);
+    //TODO: find out why map doesnt work
+    var splitters = [];
+    for (var i = 0; i<arr.length; i++) {
+        splitters.push(new Splitter(arr[i]));
+    }
+    //var splitters = arr.map(makeSplitter);
     var sorted = insertionSort(splitters, compareSplitters);
     return sorted.map(function (splitter) {
         return splitter.item;

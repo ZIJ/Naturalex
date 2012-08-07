@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Natural Sort Test</title>
+    <script src="jquery-1.7.2.min.js"></script>
+    <script src="natural-sort.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#sortButton').click(function(){
+                $('#things').sortChildren();
+            });
+        });
+
+    </script>
 </head>
 <body>
-
+    <div id="things">
+        <div>thing3</div>
+        <div>thing2</div>
+        <div>thing4</div>
+        <div>thing10</div>
+        <div>thing1</div>
+        <div>thing17</div>
+        <div>thing13</div>
+    </div>
+    <button id="sortButton">Sort</button>
 </body>
 </html>
